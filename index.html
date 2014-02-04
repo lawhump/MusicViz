@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body bgcolor="#b3b3b3">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script src = "js/bootstrap.js"></script>
+
+		<!--Begin Navbar-->
+	    <div class = "navbar navbar-inverse navbar-static-top">
+	      	<div class = "container">
+	          	<ul class = "nav navbar-nav navbar-right">
+	          		<div class="input-group">
+				      <input type="text" class="form-control">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button">Go!</button>
+				      </span>
+				    </div><!-- /input-group -->
+	          	</ul>
+	        </div>
+	    </div>
+	    <!--End Navbar-->
+		<script src="springy.js"></script>
+		<script src="springyui.js"></script>
+	    <script>
+			var graph = new Springy.Graph();
+
+			var beck = graph.newNode({label: 'Beck'});
+			var ch1 = graph.newNode({label: 'The Flaming Lips'});
+			var ch2 = graph.newNode({label: 'Devendra Banhart'});
+			var ch3 = graph.newNode({label: 'Charlotte Gainsbourg'});
+			var ch4 = graph.newNode({label: 'The White Stripes'});
+			var ch5 = graph.newNode({label: 'JSBX'});
+			var ch6 = graph.newNode({label: 'Thurston Moore'});
+
+			graph.newEdge(beck, ch1, {color: '#00A0B0'});
+			graph.newEdge(beck, ch2, {color: '#6A4A3C'});
+			graph.newEdge(beck, ch3, {color: '#CC333F'});
+			graph.newEdge(beck, ch4, {color: '#EB6841'});
+			graph.newEdge(beck, ch5, {color: '#EDC951'});
+			graph.newEdge(beck, ch6, {color: '#7DBE3C'});
+			/*graph.newEdge(beck, monty, {color: '#000000'});
+			graph.newEdge(beck, james, {color: '#00A0B0'});
+			graph.newEdge(beck, timothy, {color: '#6A4A3C'});*/
+
+			jQuery(function(){
+			  var springy = window.springy = jQuery('#springydemo').springy({
+			    graph: graph,
+			    nodeSelected: function(node){
+			      console.log('Node selected: ' + JSON.stringify(node.data));
+			    }
+			  });
+			});
+		</script>
+
+		<div class = "container">
+			<canvas id="springydemo" width="960" height="720" class = "img-responsive" />
+		</div>
+
+	</body>
+</html>
